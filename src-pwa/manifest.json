@@ -1,0 +1,139 @@
+{
+  "name": "PWA-azwish-list",
+  "description": "PWA - AZwish List",
+  "version": "1.2",
+  "manifest_version": 3,
+  "browser_action": {
+    "default_title": "AZwishlist"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": [
+      "https://www.amazon.com/wishlist*",
+      "https://www.amazon.com/gp/registry/wishlist",
+      "https://www.amazon.com/gp/registry/wishlist?*",
+      "https://www.amazon.com/gp/registry/wishlist/*",
+      "https://www.amazon.com/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.com/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.com/hz/wishlist/ls/*",
+
+      "https://www.amazon.ca/wishlist*",
+      "https://www.amazon.ca/gp/registry/wishlist",
+      "https://www.amazon.ca/gp/registry/wishlist?*",
+      "https://www.amazon.ca/gp/registry/wishlist/*",
+      "https://www.amazon.ca/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.ca/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.ca/hz/wishlist/ls/*",
+
+      "https://www.amazon.co.uk/wishlist*",
+      "https://www.amazon.co.uk/gp/registry/wishlist",
+      "https://www.amazon.co.uk/gp/registry/wishlist?*",
+      "https://www.amazon.co.uk/gp/registry/wishlist/*",
+      "https://www.amazon.co.uk/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.co.uk/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.co.uk/hz/wishlist/ls/*",
+
+      "https://www.amazon.fr/wishlist*",
+      "https://www.amazon.fr/gp/registry/wishlist",
+      "https://www.amazon.fr/gp/registry/wishlist?*",
+      "https://www.amazon.fr/gp/registry/wishlist/*",
+      "https://www.amazon.fr/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.fr/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.fr/hz/wishlist/ls/*",
+
+      "https://www.amazon.it/wishlist*",
+      "https://www.amazon.it/gp/registry/wishlist",
+      "https://www.amazon.it/gp/registry/wishlist?*",
+      "https://www.amazon.it/gp/registry/wishlist/*",
+      "https://www.amazon.it/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.it/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.it/hz/wishlist/ls/*",
+
+      "https://www.amazon.de/wishlist*",
+      "https://www.amazon.de/gp/registry/wishlist",
+      "https://www.amazon.de/gp/registry/wishlist?*",
+      "https://www.amazon.de/gp/registry/wishlist/*",
+      "https://www.amazon.de/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.de/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.de/hz/wishlist/ls/*",
+
+      "https://www.amazon.co.jp/wishlist*",
+      "https://www.amazon.co.jp/gp/registry/wishlist",
+      "https://www.amazon.co.jp/gp/registry/wishlist?*",
+      "https://www.amazon.co.jp/gp/registry/wishlist/*",
+      "https://www.amazon.co.jp/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.co.jp/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.co.jp/hz/wishlist/ls/*",
+
+      "https://www.amazon.es/wishlist*",
+      "https://www.amazon.es/gp/registry/wishlist",
+      "https://www.amazon.es/gp/registry/wishlist?*",
+      "https://www.amazon.es/gp/registry/wishlist/*",
+      "https://www.amazon.es/hz/wishlist/genericItemsPage/*",
+      "https://www.amazon.es/hz/wishlist/genericItemsPage?*",
+      "https://www.amazon.es/hz/wishlist/ls/*"
+    ],
+    "js": [
+      "content-script.js"
+    ],
+    "css": [
+      "css/content-css.css"
+    ]
+  }],
+  "permissions": [
+    "storage"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["www/*"],
+      "matches": ["*://*/*"]
+    },
+    {
+      "resources": ["js/*"],
+      "matches": ["*://*/*"]
+    },
+    {
+      "resources": ["css/*"],
+      "matches": ["*://*/*"]
+    },
+    {
+      "resources": ["<all_urls>"],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self';",
+
+
+  "orientation": "portrait",
+  "background_color": "#ffffff",
+  "theme_color": "#027be3",
+  "icons": [
+    {
+      "src": "icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
