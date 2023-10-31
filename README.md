@@ -4,7 +4,9 @@ AZwish List Version 1.2 — [Change log](CHANGELOG.md)
 
 Extension: [Chrome web store](https://chrome.google.com/webstore/detail/az-wish/abphgoldafiaioaljbhgdhjhailijkkn) 
 
-Code: [Github repository](https://github.com/AZ-Wish/bew)
+Code:
+  [GitHub MAnifest v3 latest repository](https://github.com/AZ-Wish/AZ-WishList)
+  [Github Manifest v2 original repository](https://github.com/AZ-Wish/bew)
 
 ## Requirements
 
