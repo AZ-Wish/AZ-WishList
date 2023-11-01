@@ -1,29 +1,31 @@
 import { bexBackground } from 'quasar/wrappers';
 
 
-console.log('[NEW] background.ts')
+console.log('background.ts')
 
-chrome.runtime.onInstalled.addListener(() => {
+//chrome.runtime.onInstalled.addListener(() => {
   chrome.action.onClicked.addListener((/* tab */) => {
     // Opens our extension in a new browser window.
     // Only if a popup isn't defined in the manifest.
     const action_url = 'https://www.amazon.es/gp/registry/wishlist'
     console.log('background.ts/onClicked: ' + action_url)
-    chrome.tabs.create(
+    chrome.tabs.create( { url: action_url } );
+  });
+//});
+
+/*
       { 
         url: action_url + '?create'
 //      url: chrome.runtime.getURL('https://www.amazon.es/gp/registry/wishlist'),
       },
-      (/* newTab */) => {
+      (/ * newTab * /) => {
         // Tab opened.
         url: action_url + '?opened'
       }
-    );
-  });
-});
-
+*/
 // 3  url: chrome.runtime.getURL('https://www.amazon.es/gp/registry/wishlist'),
-// 2     url: 'https://www.amazon.es/gp/registry/wishlist',
+// 2  url: 'https://www.amazon.es/gp/registry/wishlist',
+// 4  chrome.tabs.create({url: "https://www.youtube.com"});
  
 declare module '@quasar/app-vite' {
   interface BexEventMap {
