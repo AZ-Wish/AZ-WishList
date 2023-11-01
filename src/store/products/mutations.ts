@@ -7,7 +7,13 @@ const mutation: MutationTree<ProductsStateInterface> = {
     state.products = products;
     state.filteredProducts = products;
     //console.log ('Prods:' + String(state.filteredProducts.length) +'/'+ String(products.length))
-    FilterProducts (state);
+    if (!state.products.length) state.products = []
+    if (!state.filteredProducts.length) {
+      state.filteredProducts = []
+    }
+    else {
+      FilterProducts (state);
+    }
   },
   toggleLoading(state: ProductsStateInterface, loading: boolean) {
     state.loading = loading ?? !state.loading;
