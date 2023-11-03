@@ -104,9 +104,9 @@ export default defineComponent({
     console.log ('0. setup - openDetail')
     const $q = useQuasar();
     const openDetail = (link: string) => {
+      console.log ('send openDetail')
       void $q.bex.send('openDetail', { link });
     };
-
     return { openDetail };
   },
 });

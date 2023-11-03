@@ -178,7 +178,7 @@ export default defineComponent({
     const showingFilterMenu = ref(false);
 
     const gotoAmazon = async () => {
-      console.log('Return to Amazon');
+      console.log('Return to Amazon 1');
       const data = { key: 'az-wish-disabled', value: true };
       await $q.bex.send('storage.set', data);
       void $q.bex.send('reloadAmazon');

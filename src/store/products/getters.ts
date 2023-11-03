@@ -50,7 +50,7 @@ const getters: GetterTree<ProductsStateInterface, StateInterface> = {
     getters: GetterTree<ProductsStateInterface, StateInterface>
   ) {
 
-    //console.log (String(state.outOfStock) + '-' + String(state.search) + '|' + String(state.filteredProducts?.length) + '/' + String(state.products?.length))
+//    console.log (String(state.filteredProducts?.length) + 'Stock:' + String(state.outOfStock) + ' Search:' + String(state.search) + ' Filtered:' + String(state.filteredProducts?.length) + ' Products:' + String(state.products?.length))
 
     switch (state.filter) {
       case Filter.Name:
