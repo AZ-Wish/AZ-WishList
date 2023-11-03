@@ -3,15 +3,19 @@ import { bexBackground } from 'quasar/wrappers';
 
 console.log('background.ts')
 
-//chrome.runtime.onInstalled.addListener(() => {
-  chrome.action.onClicked.addListener((/* tab */) => {
+/*
+  chrome.runtime.onInstalled.addListener(() => {
+    console.log('background.ts/onInstalled: ' + action_url)
+  });
+*/
+
+    chrome.action.onClicked.addListener((/* tab */) => {
     // Opens our extension in a new browser window.
     // Only if a popup isn't defined in the manifest.
     const action_url = 'https://www.amazon.es/gp/registry/wishlist'
     console.log('background.ts/onClicked: ' + action_url)
     chrome.tabs.create( { url: action_url } );
   });
-//});
 
 /*
       { 
