@@ -31,7 +31,7 @@ export default bexContent((bridge) => {
   });
 
   bridge.on('openDetail', async ({ data }) => {
-    console.log ('OpenDetail')
+    console.log ('on OpenDetail')
     openDetail(data.link);
   });
 
@@ -50,6 +50,8 @@ export default bexContent((bridge) => {
     bridge.send(event.eventResponseKey);
   });
 })
+
+const debugExtension = false;
 
 const iFrame = document.createElement('iframe');
 
@@ -159,8 +161,8 @@ const getProducts = () => {
   for (var i = 0; i < c.length; i++) {
     var product = {};
     var id = c[i].getAttribute('data-itemid');
-    console.log ('1.0 ID: '+ id)
-    console.log (c[i])
+    if (debugExtension) console.log ('1.0 ID: '+ id)
+    if (debugExtension) console.log (c[i])
     product['n'] = i;
     product['id'] = id;
     product['moneda'] = moneda;
@@ -185,42 +187,52 @@ const getProducts = () => {
         .textContent.split(' ')[0]
         .trim();
     } catch (err) {
-      product['reviewStars'] = '';
+      product['reviewStars'] = '1';
     }
-    console.log ('3.0 Stars: '+product['reviewStars'] )
+    if (debugExtension) console.log ('3.0 Stars: '+product['reviewStars'] )
 
     try {
       product['reviewCount'] = c[i]
         .querySelector('#review_count_' + String(id))
-        .textContent
+        .textContent.replace(/[/.,]/g, '') //separador de miles (. y ,)
         .trim();
     } catch (err) {
       product['reviewCount'] = '1';
     }
-    console.log ('3.1 Reviews: '+product['reviewCount'] )
+    if (debugExtension) console.log ('3.1 Reviews: '+product['reviewCount'] )
 
-    product['reviewStarsAZ'] = product['reviewStars'] - (1*Math.min(1,(20/product['reviewCount'])))  // Normalize ratings by users: minimum 200 users or uo to 1 star less
-    console.log ('3.2 reviewStarsAZ: '+product['reviewStarsAZ'] )
+    product['reviewStarsAZ'] = parseFloat(product['reviewStars'] - (1*Math.min(1,(20/product['reviewCount']))))  // Normalize ratings by users: minimum 200 users or uo to 1 star less
+    if (debugExtension) console.log ('3.2 reviewStarsAZ: '+product['reviewStarsAZ'] )
 
     try {
-      var price = c[i]
-        .querySelector('#itemPrice_' + String(id))
-        .getElementsByClassName('a-offscreen')[0]
-        .textContent?.replace(/[/.€$¥£]/g, '')  // puntos de miles y moneda
-        .trim();
-      product['price'] = parseFloat(price.replace(',', '.')).toFixed(2);
+      var sPrice = c[i].querySelector('#itemPrice_' + String(id))
+      var decimal = sPrice.getElementsByClassName('a-price-decimal')[0].innerText
+  //    var symbol = sPrice.getElementsByClassName('a-price-symbol')[0].innerText
+
+      var price = c[i].getAttribute('data-price')
+      if (isNaN(price) || !isFinite(price)) {     //si no es un número finito
+        price = sPrice.getElementsByClassName('a-offscreen')[0]
+          .innerHTML?.replace(/[€$¥£]/g, '')  // moneda
+  
+  //        price = parseFloat(price.replace(',', '.')).toFixed(2);
+        if (decimal == ',') price = price.replace(/[/.]/g, '').replace(',', '.')  // ES    
+        else price = price.replace(/[,]/g, '')  // US    
+        price = parseFloat(price).toFixed(2);
+      }
+
+      product['price'] = price
     } catch (err) {
       product['price'] = '-';
       if (price) {
         product['agotado'] = true;
       }
     }
-
-    console.log ('3.1: Precio: '+product['price'] )
+    if (debugExtension) console.log ('3.4: Precio: '+product['price'] )
+    
     try {
       var sDiscount = '';
       sDiscount = document.querySelectorAll('span #itemPriceDrop_' + String(id))[0].innerText;
-      var discount = /reducido (.*?) €/i.exec(sDiscount);
+      var discount = /[€$¥£](\d+)\s?[€$¥£]/i.exec(sDiscount);
       if (discount) {
         product['discount'] = parseFloat(discount[1].replace(',', '.'));
         product['discount_pc'] = (
@@ -228,9 +240,8 @@ const getProducts = () => {
           product['price']
         ).toFixed(0);
       }else {
-        product['discount_pc'] = parseFloat(
-          (/reducido en un (.*?).%/i.exec(sDiscount))[1]
-        );
+//        product['discount_pc'] = parseFloat((/reducido en un (.*?).%/i.exec(sDiscount))[1]);
+        product['discount_pc'] = parseFloat(( /(\d+)\s?%/i.exec(sDiscount))[1]);
         product['discount'] = (
           (product['price'] * product['discount_pc']) /
           (100 - product['discount_pc'])
@@ -243,15 +254,31 @@ const getProducts = () => {
     } catch (err) {
       if (sDiscount)
         console.log(
-          'Error Discount: Producto: '+ String(i) +' ID: #itemPrice_' + String(id) + ' ]' + '{' + product['price'] + '} ' + sDiscount + '"' + String(err)
+          'Error Discount 1: Producto: '+ String(i) +' ID: #itemPrice_' + String(id) + ' ]' + '{' + product['price'] + '} ' + sDiscount + '"' + String(err)
         );
       else{
-        console.log ('3.2 TODO : Buscar otro precio...')
+        if (debugExtension) console.log ('3.2 Buscar otro precio...')
+        try{
+          var fullPrice = c[i]
+            .querySelectorAll('[data-csa-c-element-id="list-desktop-wishlist-item-info-deal-badge-price"]')[0]
+            .innerText?.replace(/[€$¥£]/g, '') 
+
+          if (decimal == ',') fullPrice = fullPrice.replace(/[/.]/g, '').replace(',', '.')  // ES    
+          else fullPrice = fullPrice.replace(/[,]/g, '') // US    
+          discount = fullPrice - product['price']
+
+          if (debugExtension) console.log ('D3:'+ discount + '= ' + fullPrice +' - ' + product['price'])
+
+          product['discount'] = discount.toFixed(2);
+          product['discount_pc'] = ( (discount*100) / fullPrice ).toFixed(0);
+        }catch(err){
+          if (debugExtension) console.log('Error Discount 2: Producto: '+ sDiscount + ':' + String(err));
+          product['discount'] = '0';
+          product['discount_pc'] = '0';  
+        }
       }
-      product['discount'] = '0';
-      product['discount_pc'] = '0';
     }
-    console.log ('4.0 Discount:'+product['discount'] )
+    if (debugExtension) console.log ('4.0 Discount:'+product['discount'] )
 
     try {
       product['image'] = c[i].querySelector('#itemImage_' + String(id) + ' img').src;
@@ -275,7 +302,7 @@ const getProducts = () => {
     product["asin"] = "";
   }
 */
-    console.log ('6:'+product.title )
+if (debugExtension) console.log ('6:'+product.title )
 
     if (product.link || product.title) {
       products.push(product);
