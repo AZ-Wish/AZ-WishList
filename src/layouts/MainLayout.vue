@@ -4,7 +4,7 @@
       <q-toolbar class="toolbar">
         <q-toolbar-title>
           <logo />
-          <a href='https://github.com/AZ-Wish/bew/releases' target='az' class='version'>v1.2</a>
+          <a href='https://github.com/AZ-Wish/bew/releases' target='az' class='version'>v2.0</a>
           <q-tooltip
             transition-show="scale"
             transition-hide="scale"
