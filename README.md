@@ -1,16 +1,16 @@
 # AZwish List
 
-AZwish List Version 1.2 — [Change log](CHANGELOG.md)
+AZwish List Version 2.0 — [Change log](CHANGELOG.md)
 
 Extension: [Chrome web store](https://chrome.google.com/webstore/detail/az-wish/abphgoldafiaioaljbhgdhjhailijkkn) 
 
 Code:
-  [GitHub MAnifest v3 latest repository](https://github.com/AZ-Wish/AZ-WishList)
-  [Github Manifest v2 original repository](https://github.com/AZ-Wish/bew)
+ - v2 : [GitHub Manifest v3 latest repository](https://github.com/AZ-Wish/AZ-WishList)
+ - v1 : [Github Manifest v2 original repository](https://github.com/AZ-Wish/bew)
 
 ## Requirements
 
-To use Manifest v3 you will need to use Quasar CLI with Vite instead of Quasar CLI with Webpack.
+v2: to compile for Manifest v3 you will need to use Quasar CLI with Vite instead of Quasar CLI with Webpack.
 
 
 ## Install the dependencies
@@ -82,7 +82,7 @@ Include hot-reload even in the current running Chrome extension. Most of the cha
 quasar build -m bex
 ```
 
-Will build a production version ZIP file inside \dist\bex
+A production version ZIP file will be build inside \dist\bex
 
 ### Install and test the Chrome extension in Preproduction:
 

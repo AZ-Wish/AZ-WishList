@@ -12,7 +12,7 @@
             self="top left"
             :offset="[-15, 10]"
           >
-            <B>AZ WishList</B> v1.2<br/>
+            <B>AZ WishList</B> v2.0<br/>
             Code by Oskar & Troglo<br/>
             Design by Humphrey<br/><br/>
             <i>Made witn Intelygenz</i>
