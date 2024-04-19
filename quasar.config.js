@@ -79,6 +79,9 @@ module.exports = configure(function (/* ctx */) {
       // extendViteConf (viteConf) {},
       // viteVuePluginOptions: {},
 
+      rollupOptions: {
+        external: 'quasar/src/utils/uid'
+      }
       
       // vitePlugins: [
       //   [ 'package-name', { ..options.. } ]

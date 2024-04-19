@@ -1,6 +1,6 @@
 # AZwish List
 
-AZwish List Version 2.0 — [Change log](CHANGELOG.md)
+AZwish List Version 2.1 — [Change log](CHANGELOG.md)
 
 Extension: [Chrome web store](https://chrome.google.com/webstore/detail/az-wish/abphgoldafiaioaljbhgdhjhailijkkn) 
 
@@ -21,27 +21,18 @@ yarn
 If the next step you find problems starting the App, you can try making a 'npm install' before repeating this step. Even deleting the node_modules folder and yarn.lock file and repeating this step.
 
 ### Update dependencies (not required !!!)
-View outdated dependencies and audit vulnerabilities
+View outdated dependencies
 
 ```bash
-npm outdated
-
-npm audit
+yarn  outdated
 ```
-
-Fix security vulnerabilities
-
-```bash
-npm audit fix
-```
-
 
 Update yarn and packages if you feel brave (it could break everything)
 ```bash
 yarn set version stable
 yarn install
 
-npm update
+npm upgrade
 ```
 
 ### Lint the files
@@ -66,14 +57,16 @@ And are automatically copied to ZIP:/www/..
 yarn dev -m bex
 ```
 
-Will create all the required files and the \www folder inside \bew\src-bex
+Will create all the required files and the \www folder inside \dist\bex
 
 After building the Chrome extension:
 
 - Open Chrome tab: chrome://extensions/
-- Press button "Load unpacked"
+- [In Developer mode] Press button "Load unpacked"
 - Select folder:
-  - Dev:  \AZ-WishList\src-bex
+  - Dev:  \AZ-WishList\dist\bex
+- Browse to the URL of your Amazon WishList page:
+  - https://www.amazon.es/gp/registry/wishlist    
 
 Include hot-reload even in the current running Chrome extension. Most of the changes works refreshing the browser page some source files requires refreshing the extension using the cycle icon in the extension page ( chrome://extensions/ ) 
 
