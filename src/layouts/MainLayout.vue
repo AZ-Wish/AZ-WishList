@@ -4,7 +4,7 @@
       <q-toolbar class="toolbar">
         <q-toolbar-title>
           <logo />
-          <a href='https://github.com/AZ-Wish/bew/releases' target='az' class='version'>v2.0</a>
+          <a href='https://github.com/AZ-Wish/bew/releases' target='az' class='version'>v2.1</a>
           <q-tooltip
             transition-show="scale"
             transition-hide="scale"
@@ -12,7 +12,7 @@
             self="top left"
             :offset="[-15, 10]"
           >
-            <B>AZ WishList</B> v2.0<br/>
+            <B>AZ WishList</B> v2.1<br/>
             Code by Oskar & Troglo<br/>
             Design by Humphrey<br/><br/>
             <i>Made witn Intelygenz</i>
@@ -98,21 +98,21 @@
               <q-item
                 clickable
                 class="menu-item"
-                :class="{ selected: filter == Filter.Price }"
-                v-close-popup
-                @click="setFilter(Filter.Price)"
-              >
-                <q-item-section>Price</q-item-section>
-              </q-item>
-
-              <q-item
-                clickable
-                class="menu-item"
                 :class="{ selected: filter == Filter.Review_Stars }"
                 v-close-popup
                 @click="setFilter(Filter.Review_Stars)"
               >
                 <q-item-section>AZ score</q-item-section>
+              </q-item>
+
+              <q-item
+                clickable
+                class="menu-item"
+                :class="{ selected: filter == Filter.Price }"
+                v-close-popup
+                @click="setFilter(Filter.Price)"
+              >
+                <q-item-section>Price</q-item-section>
               </q-item>
 
               <q-item

@@ -17,8 +17,8 @@ export interface Product {
 
 export enum Filter {
   Name,
-  Price,
   Review_Stars,
+  Price,
   Discount,
   Discount_Percent,
   Availability,

@@ -55,10 +55,10 @@ const getters: GetterTree<ProductsStateInterface, StateInterface> = {
     switch (state.filter) {
       case Filter.Name:
         return getters.productsByName;
-      case Filter.Price:  
-        return getters.productsByPrice;
       case Filter.Review_Stars:
         return getters.productsByReviewStarsAZ;
+      case Filter.Price:  
+        return getters.productsByPrice;
       case Filter.Discount:
         return getters.productsByDiscount;
       case Filter.Discount_Percent:
