@@ -68,7 +68,9 @@ After building the Chrome extension:
 - Browse to the URL of your Amazon WishList page:
   - https://www.amazon.es/gp/registry/wishlist    
 
-Include hot-reload even in the current running Chrome extension. Most of the changes works refreshing the browser page some source files requires refreshing the extension using the cycle icon in the extension page ( chrome://extensions/ ) 
+Include hot-reload even in the current running Chrome extension. 
+
+*Note* Most of the changes works refreshing the browser page some source files (like content-script.js) requires refreshing the extension using the cycle icon in the extension page ( chrome://extensions/ ) 
 
 ### Build the Chrome extension for preproduction and production
 ```bash

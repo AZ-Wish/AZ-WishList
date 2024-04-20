@@ -3,7 +3,7 @@
   "version": "2.1.0",
   "description": "AZwish List with Manifest v3",
   "productName": "AZwish List",
-  "author": "Manuel Martín-Vivaldi <manuel.martin-vivaldi@intelygenz.com>",
+  "author": "Manuel Martín-Vivaldi <manuelmartinvivaldi@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
@@ -16,15 +16,15 @@
     "@quasar/extras": "^1.16.11",
     "axios": "^1.6.8",
     "events": "^3.3.0",
-    "quasar": "2.15.2",
-    "vite": "2.9.17",
+    "quasar": "^2.15.3",
+    "vite": "2.9.18",
     "vue": "^3.0.0",
     "vue-i18n": "^9.13.0",
     "vue-router": "^4.3.2",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
-    "@quasar/app-vite": "1.8.0",
+    "@quasar/app-vite": "^1.8.2",
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "7.7.0",
     "@typescript-eslint/parser": "7.7.0",

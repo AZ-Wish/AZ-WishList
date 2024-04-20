@@ -20,11 +20,13 @@
         col
         product-item-box-description-wrapper
         vertical-middle
-        product-item-box-description
+        product-item-box-text
       "
       :class="{ disabled: product.agotado }"
     >
-      {{ product.title }}
+    <div class='product-item-box-title'>{{ product.title }}</div>
+      <div class='product-item-box-description'>{{ product.description }}</div>
+
     </div>
     <div v-if="product.price" class="product-item-box-price text-right">
       <div
@@ -101,10 +103,10 @@ export default defineComponent({
     },
   },
   setup() {
-    console.log ('0. setup - openDetail')
+//    console.log ('0. setup - openDetail')
     const $q = useQuasar();
     const openDetail = (link: string) => {
-      console.log ('send openDetail')
+      console.log ('send openDetail', link)
       void $q.bex.send('openDetail', { link });
     };
     return { openDetail };
@@ -163,21 +165,31 @@ export default defineComponent({
   margin: 0;
 }
 
-.product-item-box-description {
+.product-item-box-text {
   padding: 0 16px;
   font-family: Roboto;
   font-style: normal;
   font-weight: 300;
-  font-size: 18px;
   line-height: 21px;
   align-items: center;
-  color: #333333;
-
-  -webkit-line-clamp: 2;
   overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
 }
+
+.product-item-box-title {
+  font-size: 18px;
+  color: #333333;
+  -webkit-line-clamp: 3;
+}
+
+
+.product-item-box-description {
+  font-size: 12px;
+  color: #808080;
+  -webkit-line-clamp: 1;
+}
+
 .product-item-box-price {
   display: table;
   padding: 18px 23.66px 36px 18px;

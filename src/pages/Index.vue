@@ -45,13 +45,21 @@ export default defineComponent({
       store.commit('products/toggleLoading', true);
       store.commit('products/setProducts', products);
       try {
+        var counter = 0
         for (var i = 1; i <= 25; i++) {
           const { data: newProducts } = (await $q.bex.send(
             'fetchProducts'
           )) as {
             data: Product[];
           };
-          if (!newProducts || newProducts.length==loadedProducts) break;
+          if (!newProducts || newProducts.length==loadedProducts) {
+            counter ++;
+            console.log ('No products: ', counter);
+            if (counter>1) {
+              break;
+            }
+           await new Promise(resolve => setTimeout(resolve, 2000));
+          }
           console.log ('Preload ' + String(i) + ': ' + String(newProducts.length-loadedProducts) + ' new products (' + String(loadedProducts) + '/' + String(newProducts.length) + ')' );
           loadedProducts = newProducts.length;
           store.commit('products/setProducts', newProducts);

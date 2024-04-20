@@ -9,6 +9,7 @@ export interface Product {
   link: string;
   price: string;
   title: string;
+  description: string;
   agotado?: boolean;
   reviewStars: string;
   reviewCount: string;

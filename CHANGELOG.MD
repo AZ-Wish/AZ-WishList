@@ -1,5 +1,21 @@
 # Change log
 
+## v2.1.0 — ../04/2024
+
+More info at: [Milestone v2.1](https://github.com/AZ-Wish/AZ-WishList/milestone/2)
+
+**Added:**
+ - feat: Add description to Products #6
+ - feat: Reorder menu options #7
+
+**Fixed:**
+ - fix: Improve load all products at first try #5
+ - fix: fix product discount #4
+
+**Changed:**
+ - build: upgrade to quasar v2.15.3 and @quasar/app-vite v1.8.2
+
+
 ## v2.0.0 — 5/11/2023
 
 More info at: [Milestone v2.0.0](https://github.com/AZ-Wish/AZ-WishList/milestone/1)

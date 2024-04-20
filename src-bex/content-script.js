@@ -31,7 +31,7 @@ export default bexContent((bridge) => {
   });
 
   bridge.on('openDetail', async ({ data }) => {
-    console.log ('on OpenDetail')
+    console.log ('bridge.on OpenDetail')
     openDetail(data.link);
   });
 
@@ -85,7 +85,7 @@ Object.assign(iFrame.style, {
 
 // -----------------------------
 
-console.log('content-script.js')
+console.log('content-script.js loaded')
 
 const baseUrl = 'https://www.amazon.es/gp/registry/wishlist';
 var amazonPage = false;
@@ -138,7 +138,7 @@ const fetchProducts = async () =>
   });
 
 const openDetail = (link) => {
-  console.log ('OpenDetail')
+  console.log ('OpenDetail', link)
   window.open(String(link), '_blank').focus();
 };
 
@@ -180,6 +180,14 @@ const getProducts = () => {
     } catch (err) {
       product['link'] = '';
     }
+
+    try {
+      product['description'] = c[i].querySelector('#item-byline-' + String(id)).innerText;
+    }
+    catch (err) {
+      product['description'] = '';
+    }
+    if (debugExtension) console.log ('Description: '+product['description'] )
 
     try {
       product['reviewStars'] = c[i]
@@ -232,16 +240,19 @@ const getProducts = () => {
     try {
       var sDiscount = '';
       sDiscount = document.querySelectorAll('span #itemPriceDrop_' + String(id))[0].innerText;
-      var discount = /[€$¥£](\d+)\s?[€$¥£]/i.exec(sDiscount);
-      if (discount) {
-        product['discount'] = parseFloat(discount[1].replace(',', '.'));
+      //var discount = /[€$¥£](\d+)\s?[€$¥£]/i.exec(sDiscount);
+      var discount = /[^a-zA-Z\s]+/gi.exec(sDiscount);
+      if (!/[\%]/.exec(sDiscount)) { //descuento
+        product['discount'] = parseFloat(discount[0].replace(',', '.'));
         product['discount_pc'] = (
           (product['discount'] * 100) /
           product['price']
         ).toFixed(0);
-      }else {
+      }
+      else {  //porcentaje
 //        product['discount_pc'] = parseFloat((/reducido en un (.*?).%/i.exec(sDiscount))[1]);
-        product['discount_pc'] = parseFloat(( /(\d+)\s?%/i.exec(sDiscount))[1]);
+ //       product['discount_pc'] = parseFloat(( /(\d+)\s?%/i.exec(sDiscount))[1]);
+        product['discount_pc'] = parseFloat(discount[0]);
         product['discount'] = (
           (product['price'] * product['discount_pc']) /
           (100 - product['discount_pc'])
@@ -254,7 +265,7 @@ const getProducts = () => {
     } catch (err) {
       if (sDiscount)
         console.log(
-          'Error Discount 1: Producto: '+ String(i) +' ID: #itemPrice_' + String(id) + ' ]' + '{' + product['price'] + '} ' + sDiscount + '"' + String(err)
+          'Error Discount 1a: Producto: '+ String(i) +' ID: #itemPrice_' + String(id) + ' {' + product['price'] + '} [' + sDiscount + '] ' + String(err)
         );
       else{
         if (debugExtension) console.log ('3.2 Buscar otro precio...')

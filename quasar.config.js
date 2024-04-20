@@ -77,7 +77,13 @@ module.exports = configure(function (/* ctx */) {
       // distDir
 
       // extendViteConf (viteConf) {},
-      // viteVuePluginOptions: {},
+      viteVuePluginOptions: {
+        template: {
+          compilerOptions: {
+            isCustomElement: (tag) => ['IMG','B'].includes(tag)
+          }
+        }  
+      },
 
       //rollupOptions: {  // just for Quasar 2.15.3 bug : https://github.com/quasarframework/quasar/issues/17124
       //  external: 'quasar/src/utils/uid'
