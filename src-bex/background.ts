@@ -44,7 +44,21 @@ declare module '@quasar/app-vite' {
   }
 }
 
-export default bexBackground((bridge /* , allActiveConnections */) => {
+export default bexBackground((bridge , allActiveConnections) => {
+
+
+  console.log (allActiveConnections);
+
+  /*
+
+  if (allActiveConnections && allActiveConnections[0].app) {
+    console.log('Port Listener');
+    allActiveConnections[0].app.port.onDisconnect.addListener(() => {
+      console.log('Port disconnected');
+    });
+  }
+*/
+
   bridge.on('log', ({ data, respond }) => {
     console.log(`[BEX] ${data.message}`, ...(data.data || []));
 //    respond();

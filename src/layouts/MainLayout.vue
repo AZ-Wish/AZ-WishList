@@ -12,7 +12,7 @@
             self="top left"
             :offset="[-15, 10]"
           >
-            <B>AZ WishList</B> v2.1<br/>
+            <B>AZwish List</B> v2.1<br/>
             Code by Oskar & Troglo<br/>
             Design by Humphrey<br/><br/>
             <i>Made witn Intelygenz</i>
@@ -25,7 +25,7 @@
           class="action"
           @mouseenter="reloadColor = 'primary'"
           @mouseleave="reloadColor = ''"
-          @click="gotoAmazon"
+          @click="showAmazon"
           target="_blank"
           icon="img:icons/amazon-ico.svg"
           flat
@@ -41,7 +41,7 @@
           class="action"
           @mouseenter="reloadColor = 'primary'"
           @mouseleave="reloadColor = ''"
-          @click="reloadAmazon"
+          @click="reloadWL"
           target="_blank"
           flat
           rounded
@@ -177,15 +177,15 @@ export default defineComponent({
     const filterColor = ref('');
     const showingFilterMenu = ref(false);
 
-    const gotoAmazon = async () => {
+    const showAmazon = async () => {
       console.log('Return to Amazon 1');
       const data = { key: 'az-wish-disabled', value: true };
       await $q.bex.send('storage.set', data);
-      void $q.bex.send('reloadAmazon');
+      void $q.bex.send('showAmazon');
     };
 
-    const reloadAmazon = async () => {
-      console.log('Reload wishlist');
+    const reloadWL = async () => {
+      console.log('Reload WishList');
       store.commit('products/toggleLoading', true);
       try {
         const { data: newProducts } = (await $q.bex.send('fetchProducts')) as {
@@ -202,8 +202,8 @@ export default defineComponent({
       reloadColor,
       filterColor,
       showingFilterMenu,
-      gotoAmazon,
-      reloadAmazon,
+      showAmazon,
+      reloadWL,
       setFilter: (filter: Filter) => store.commit('products/setFilter', filter),
       filter: computed(() => (store.state as StateInterface).products.filter),
       loading: computed(() => (store.state as StateInterface).products.loading),
