@@ -32,10 +32,10 @@ Update yarn and packages if you feel brave (it could break everything)
 yarn set version stable
 yarn install
 
-npm upgrade
+yarn upgrade
 ```
 
-### Lint the files
+### Lint files
 
 Hide warnings with the --quiet flag
 

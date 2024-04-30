@@ -4,7 +4,7 @@
   "version": "1.2",
   "manifest_version": 3,
   "browser_action": {
-    "default_title": "AZwishlist"
+    "default_title": "AZwish List"
   },
   "background": {
     "service_worker": "background.js"
