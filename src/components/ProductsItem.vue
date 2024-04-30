@@ -103,11 +103,11 @@ export default defineComponent({
     },
   },
   setup() {
-//    console.log ('0. setup - openDetail')
     const $q = useQuasar();
     const openDetail = (link: string) => {
-      console.log ('send openDetail', link)
-      void $q.bex.send('openDetail', { link });
+      console.log ('openDetail');
+      window.open(link, '_blank');
+//      void $q.bex.send('openDetail', { link }); #1 why use Quasar port to open a tab? (that disconnect sometimes)
     };
     return { openDetail };
   },

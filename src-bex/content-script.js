@@ -10,11 +10,16 @@ import { bexContent } from 'quasar/wrappers'
  */
 //export default function attachContentHooks(bridge) {
 export default bexContent((bridge) => {
-  bridge.on('reloadAmazon', event => {
+
+
+
+/* #3 why use Quasar port to open a tab? (that disconnect sometimes) */
+  bridge.on('showAmazon', event => {
     console.log('[bexContent] showAmazon')
     iFrame.hidden = true;
     showAmazon();
   });
+ 
 
   bridge.on('getProducts', async (event) => {
     const data = getProducts();
@@ -22,18 +27,22 @@ export default bexContent((bridge) => {
   });
 
   bridge.on('fetchProducts', async (event) => {
-    try {
-      const data = await fetchProducts();
-      bridge.send(event.eventResponseKey, data);
-    } catch {
-      bridge.send(event.eventResponseKey, null);
-    }
+    const data = await fetchProducts();
+    bridge.send(event.eventResponseKey, data);
+  //   try {
+  //     const data = await fetchProducts();
+  //     bridge.send(event.eventResponseKey, data);
+  //   } catch {
+  //     bridge.send(event.eventResponseKey, null);
+  //   }
   });
 
+  /* #1 why use Quasar port to open a tab? (that disconnect sometimes)
   bridge.on('openDetail', async ({ data }) => {
     console.log ('bridge.on OpenDetail')
     openDetail(data.link);
   });
+  */
 
   // bridge.send('products', { data: [1, 2, 3] });
   /**
@@ -95,12 +104,15 @@ var amazonPage = false;
 //   value: 'on',
 // });
 
+/* #3 why use Quasar port to open a tab? (that disconnect sometimes)  */  
 const reloadAmazon = (force) => {
   console.log('Reload Amazon 2');
   if (force || location.href.indexOf('amazon') === -1) location.href = baseUrl;
   else location.reload();
 };
 
+
+/* #3 why use Quasar port to open a tab? (that disconnect sometimes) */
 const showAmazon = () => {
   console.log('Return to Amazon 2');
   amazonPage = true;
@@ -108,6 +120,7 @@ const showAmazon = () => {
   document.body.style.overflowY = 'auto'
   document.getElementById('a-page').hidden = false;
 };
+
 
 const fetchProducts = async () =>
   new Promise((resolve, reject) => {
@@ -137,10 +150,12 @@ const fetchProducts = async () =>
     }, 1000);
   });
 
+/* #1 why use Quasar port to open a tab? (that disconnect sometimes)  
 const openDetail = (link) => {
   console.log ('OpenDetail', link)
   window.open(String(link), '_blank').focus();
 };
+*/
 
 const getProducts = () => {
   const products = [];
