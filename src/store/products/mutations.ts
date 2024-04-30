@@ -38,7 +38,7 @@ const mutation: MutationTree<ProductsStateInterface> = {
 
 function FilterProducts(state: ProductsStateInterface){
   state.filteredProducts = (state.products || []).filter(
-    ({ title }) => title.toLowerCase().includes(state.search.toLowerCase())
+    ({ title, description }) => title.toLowerCase().includes(state.search.toLowerCase()) || description.toLowerCase().includes(state.search.toLowerCase())
   );
 
   if (!state.outOfStock) { //filtrar agotados

@@ -1,7 +1,7 @@
 <template>
   <div class="resume">
-    <strong>{{ discounts.length }} deals</strong> have been found on the
-    <strong>{{ filteredProducts ? filteredProducts.length : 0 }} products</strong> on your WishList
+    <strong class="text-primary">{{ discounts.length }} deals</strong> have been found for the
+    <strong>{{ filteredProducts ? filteredProducts.length : 0 }} products</strong> on your Wish List
   </div>
 </template>
 
