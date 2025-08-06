@@ -45,7 +45,8 @@ yarn lint --quiet
 
 [Doc](https://quasar.dev/quasar-cli-webpack/handling-assets/)
 
-Static images must be placed in '/public/..'', '/src/assets/..'' and sometimes icons added in the manifest.json
+Static images must be placed in '/public/..'' and '/src/assets/..'.
+Also icons included in the 'manifest.json' need to be added in the folder 'src-bex/icons'
 
 And are automatically copied to ZIP:/www/..
 
