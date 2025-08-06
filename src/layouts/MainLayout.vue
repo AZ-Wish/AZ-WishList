@@ -4,7 +4,7 @@
       <q-toolbar class="toolbar">
         <q-toolbar-title>
           <logo />
-          <a href='https://github.com/AZ-Wish/bew/releases' target='az' class='version'>v2.1</a>
+          <a href='https://github.com/AZ-Wish/AZ-WishList/releases' target='az' class='version'>v2.1</a>
           <q-tooltip
             transition-show="scale"
             transition-hide="scale"
@@ -33,7 +33,7 @@
         >
         </q-btn>
 
-        <div class="action-label">Reload WishList</div>
+        <div class="action-label">Reload Wish List</div>
         <q-btn
           :color="loading ? 'primary' : reloadColor"
           :loading="loading"
@@ -185,7 +185,7 @@ export default defineComponent({
     };
 
     const reloadWL = async () => {
-      console.log('Reload WishList');
+      console.log('Reload Wish List');
       store.commit('products/toggleLoading', true);
       try {
         const { data: newProducts } = (await $q.bex.send('fetchProducts')) as {

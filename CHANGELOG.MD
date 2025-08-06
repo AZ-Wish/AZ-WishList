@@ -1,6 +1,6 @@
 # Change log
 
-## v2.1.0 — ../04/2024
+## v2.1.0 — 06/08/2025
 
 More info at: [Milestone v2.1](https://github.com/AZ-Wish/AZ-WishList/milestone/2)
 
@@ -8,14 +8,16 @@ More info at: [Milestone v2.1](https://github.com/AZ-Wish/AZ-WishList/milestone/
  - feat: show Products' description #6
  - feat: search in products title and description #8
  - feat: reorder menu options #7
+ - feat: added datetime to deals header #11
 
 **Fixed:**
- - fix: Show product button fails in silence #1
+ - fix: show product button failed in silence #1
  - fix: improve load all products at first try #5
  - fix: fix product discount #4
+ - fix: update public link to github project #10
 
 **Changed:**
- - build: upgrade to quasar v2.15.4, @quasar/app-vite v1.8.5 and Pkg vite v2.9.18
+ - build: upgrade to quasar v2.18.2, @quasar/app-vite v1.11.0 and Pkg vite v2.9.18
 
 
 ## v2.0.0 — 5/11/2023

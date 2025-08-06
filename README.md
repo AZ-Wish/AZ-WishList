@@ -18,21 +18,19 @@ v2: to compile for Manifest v3 you will need to use Quasar CLI with Vite instead
 ```bash
 yarn
 ```
-If the next step you find problems starting the App, you can try making a 'npm install' before repeating this step. Even deleting the node_modules folder and yarn.lock file and repeating this step.
+If the next step you find problems starting the App, you can try making a 'yarn install' before repeating this step. Even deleting the node_modules folder and yarn.lock file and repeating this step.
 
 ### Update dependencies (not required !!!)
-View outdated dependencies
+View upgradeable dependencies and select which one to upgrade
 
 ```bash
-yarn  outdated
+yarn upgrade-interactive
 ```
 
 Update yarn and packages if you feel brave (it could break everything)
 ```bash
 yarn set version stable
 yarn install
-
-yarn upgrade
 ```
 
 ### Lint files
@@ -47,7 +45,7 @@ yarn lint --quiet
 
 [Doc](https://quasar.dev/quasar-cli-webpack/handling-assets/)
 
-Statis images must be placed in '/public/..'' and '/src/assets/..''
+Static images must be placed in '/public/..'', '/src/assets/..'' and sometimes icons added in the manifest.json
 
 And are automatically copied to ZIP:/www/..
 

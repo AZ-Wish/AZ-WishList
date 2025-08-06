@@ -1,7 +1,7 @@
 <template>
   <div class="resume">
     <strong class="text-primary">{{ discounts.length }} deals</strong> have been found for the
-    <strong>{{ filteredProducts ? filteredProducts.length : 0 }} products</strong> on your Wish List
+    <strong>{{ filteredProducts ? filteredProducts.length : 0 }} products</strong> on your Wish List at {{ currentDate }}
   </div>
 </template>
 
@@ -11,7 +11,13 @@ import { defineComponent, computed } from 'vue';
 import { useStore } from 'vuex';
 import { StateInterface } from '../store';
 
+
 export default defineComponent({
+  data() {
+    return {
+      currentDate: new Date().toLocaleString(),
+    };
+  },
   name: 'Resume',
   setup() {
     const store = useStore();

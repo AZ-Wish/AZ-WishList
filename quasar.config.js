@@ -9,6 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const { configure } = require('quasar/wrappers');
 
 
