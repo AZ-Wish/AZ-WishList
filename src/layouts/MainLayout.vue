@@ -4,7 +4,12 @@
       <q-toolbar class="toolbar">
         <q-toolbar-title>
           <logo />
-          <a href='https://github.com/AZ-Wish/AZ-WishList/releases' target='az' class='version'>v2.1</a>
+          <a
+            href="https://github.com/AZ-Wish/AZ-WishList/releases"
+            target="az"
+            class="version"
+            >v2.2</a
+          >
           <q-tooltip
             transition-show="scale"
             transition-hide="scale"
@@ -12,10 +17,10 @@
             self="top left"
             :offset="[-15, 10]"
           >
-            <B>AZwish List</B> v2.1<br/>
-            Code by Oskar & Troglo<br/>
-            Design by Humphrey<br/><br/>
-            <i>Made witn Intelygenz</i>
+            <B>AZwish List</B> v2.2<br />
+            Code by Oskar & Troglo<br />
+            Design by Humphrey<br /><br />
+            <i>Made with Intelygenz</i>
           </q-tooltip>
         </q-toolbar-title>
 
@@ -50,9 +55,9 @@
         </q-btn>
 
         <q-input
-          label="Search" 
+          label="Search"
           class="action-label"
-          color="primary" 
+          color="primary"
           v-model="search"
           @keypress.enter="setSearch(search)"
           @mouseenter="reloadColor = 'primary'"
@@ -65,7 +70,7 @@
 
         <q-checkbox
           name="outOfStock"
-          label="Out of stock" 
+          label="Out of stock"
           v-model="stock"
           @click="setOutOfStock(stock)"
           :disable="loading"
@@ -208,7 +213,8 @@ export default defineComponent({
       filter: computed(() => (store.state as StateInterface).products.filter),
       loading: computed(() => (store.state as StateInterface).products.loading),
       stock: ref(false),
-      setOutOfStock: (stock: boolean) => store.commit('products/setOutOfStock', stock),
+      setOutOfStock: (stock: boolean) =>
+        store.commit('products/setOutOfStock', stock),
       search: ref(),
       setSearch: (search: string) => store.commit('products/setSearch', search),
     };
@@ -240,12 +246,12 @@ export default defineComponent({
 }
 
 .version {
-    display: inline-block;
-    vertical-align: top;
-    padding-top: 23px;
-    color: #aaaaaa;
-    text-decoration: none;
-    font-size: 12px;
+  display: inline-block;
+  vertical-align: top;
+  padding-top: 23px;
+  color: #aaaaaa;
+  text-decoration: none;
+  font-size: 12px;
 }
 
 .action {
@@ -256,8 +262,11 @@ export default defineComponent({
   margin: 0 0 0 1rem;
   background: white;
   border-radius: 1.25rem;
-  box-shadow: -5px -5px 10px white, 5px 5px 10px rgba(47, 47, 88, 0.3),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.1), inset 2px 2px 4px white;
+  box-shadow:
+    -5px -5px 10px white,
+    5px 5px 10px rgba(47, 47, 88, 0.3),
+    inset -2px -2px 4px rgba(0, 0, 0, 0.1),
+    inset 2px 2px 4px white;
 
   padding: 0;
   /* border-radius: 30px; */

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="row justify-evenly" style="align-content:start">
+  <q-page class="row justify-evenly" style="align-content: start">
     <template v-if="!products">
       <q-inner-loading :showing="!products">
         <q-spinner-gears size="50px" color="primary" />
@@ -45,22 +45,34 @@ export default defineComponent({
       store.commit('products/toggleLoading', true);
       store.commit('products/setProducts', products);
       try {
-        var counter = 0
+        var counter = 0;
         for (var i = 1; i <= 25; i++) {
           const { data: newProducts } = (await $q.bex.send(
-            'fetchProducts'
+            'fetchProducts',
           )) as {
             data: Product[];
           };
-          if (!newProducts || newProducts.length==loadedProducts) {
-            counter ++;
-            console.log ('No products: ', counter);
-            if (counter>1) {
+          if (!newProducts || newProducts.length == loadedProducts) {
+            counter++;
+            console.log('! Tries without new products found:', counter);
+            if (counter > 1) {
               break;
             }
-           await new Promise(resolve => setTimeout(resolve, 2000));
+            await new Promise((resolve) => setTimeout(resolve, 2000));
+          } else {
+            counter = 0; //new products found
           }
-          console.log ('Preload ' + String(i) + ': ' + String(newProducts.length-loadedProducts) + ' new products (' + String(loadedProducts) + '/' + String(newProducts.length) + ')' );
+          console.log(
+            'Preload ' +
+              String(i) +
+              ': ' +
+              String(newProducts.length - loadedProducts) +
+              ' new products (' +
+              String(loadedProducts) +
+              '/' +
+              String(newProducts.length) +
+              ')',
+          );
           loadedProducts = newProducts.length;
           store.commit('products/setProducts', newProducts);
         }
@@ -71,16 +83,15 @@ export default defineComponent({
 
     return {
       products: computed(
-        () => (store.state as StateInterface).products.filteredProducts
+        () => (store.state as StateInterface).products.filteredProducts,
       ),
       productsByFilter: computed(
         () =>
           (store.getters as { 'products/productsByFilter': Product[] })[
             'products/productsByFilter'
-          ]
+          ],
       ),
     };
   },
 });
-
 </script>
