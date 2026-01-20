@@ -3,13 +3,19 @@
     <q-header class="header">
       <q-toolbar class="toolbar">
         <q-toolbar-title>
-          <logo />
+          <a
+            href="https://chromewebstore.google.com/detail/azwish-list/gdjlahpieanojklejhdjedcopmhjmhgp"
+            target="az"
+          >
+            <logo />
+          </a>
           <a
             href="https://github.com/AZ-Wish/AZ-WishList/releases"
             target="az"
             class="version"
-            >v2.2</a
           >
+            v2.2
+          </a>
           <q-tooltip
             transition-show="scale"
             transition-hide="scale"

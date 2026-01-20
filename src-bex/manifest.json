@@ -1,12 +1,10 @@
 {
   "name": "AZwish List",
   "description": "View all deals in your personal Amazon Wish List.",
-  "version": "2.1",
+  "version": "2.2",
   "manifest_version": 3,
 
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
 
   "action": {},
 
@@ -15,24 +13,20 @@
   },
 
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
+    "extension_pages": "script-src 'self'; object-src 'self'"
   },
 
   "web_accessible_resources": [
     {
-      "resources": [ "*" ],
-      "matches": [ "*://*/*" ]
+      "resources": ["*"],
+      "matches": ["*://*/*"]
     }
   ],
 
   "content_scripts": [
-    {      
-      "js": [
-        "content-script.js"
-      ],
-      "css": [
-         "assets/content.css" 
-      ],
+    {
+      "js": ["content-script.js"],
+      "css": ["assets/content.css"],
       "matches": [
         "https://www.amazon.com/wishlist*",
         "https://www.amazon.com/gp/registry/wishlist",
@@ -41,7 +35,7 @@
         "https://www.amazon.com/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.com/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.com/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.ca/wishlist*",
         "https://www.amazon.ca/gp/registry/wishlist",
         "https://www.amazon.ca/gp/registry/wishlist?*",
@@ -49,7 +43,7 @@
         "https://www.amazon.ca/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.ca/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.ca/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.co.uk/wishlist*",
         "https://www.amazon.co.uk/gp/registry/wishlist",
         "https://www.amazon.co.uk/gp/registry/wishlist?*",
@@ -57,7 +51,7 @@
         "https://www.amazon.co.uk/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.co.uk/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.co.uk/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.fr/wishlist*",
         "https://www.amazon.fr/gp/registry/wishlist",
         "https://www.amazon.fr/gp/registry/wishlist?*",
@@ -65,7 +59,7 @@
         "https://www.amazon.fr/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.fr/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.fr/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.it/wishlist*",
         "https://www.amazon.it/gp/registry/wishlist",
         "https://www.amazon.it/gp/registry/wishlist?*",
@@ -73,7 +67,7 @@
         "https://www.amazon.it/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.it/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.it/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.de/wishlist*",
         "https://www.amazon.de/gp/registry/wishlist",
         "https://www.amazon.de/gp/registry/wishlist?*",
@@ -81,7 +75,7 @@
         "https://www.amazon.de/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.de/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.de/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.co.jp/wishlist*",
         "https://www.amazon.co.jp/gp/registry/wishlist",
         "https://www.amazon.co.jp/gp/registry/wishlist?*",
@@ -89,7 +83,7 @@
         "https://www.amazon.co.jp/hz/wishlist/genericItemsPage/*",
         "https://www.amazon.co.jp/hz/wishlist/genericItemsPage?*",
         "https://www.amazon.co.jp/hz/wishlist/ls/*",
-  
+
         "https://www.amazon.es/wishlist*",
         "https://www.amazon.es/gp/registry/wishlist",
         "https://www.amazon.es/gp/registry/wishlist?*",
@@ -106,5 +100,4 @@
     "48": "icons/icon-48x48.png",
     "128": "icons/icon-128x128.png"
   }
-  
 }
