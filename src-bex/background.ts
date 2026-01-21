@@ -1,7 +1,6 @@
 import { bexBackground } from 'quasar/wrappers';
 
-
-console.log('background.ts')
+console.log('background.ts');
 
 /*
   chrome.runtime.onInstalled.addListener(() => {
@@ -9,16 +8,16 @@ console.log('background.ts')
   });
 */
 
-    chrome.action.onClicked.addListener((/* tab */) => {
-    // Opens our extension in a new browser window.
-    // Only if a popup isn't defined in the manifest.
-    const action_url = 'https://www.amazon.es/gp/registry/wishlist'
-    console.log('background.ts/onClicked: ' + action_url)
-    chrome.tabs.create( { url: action_url } );
-  });
+chrome.action.onClicked.addListener((/* tab */) => {
+  // Opens our extension in a new browser window.
+  // Only if a popup isn't defined in the manifest.
+  const action_url = 'https://www.amazon.es/gp/registry/wishlist';
+  console.log('background.ts/onClicked: ' + action_url);
+  chrome.tabs.create({ url: action_url });
+});
 
 /*
-      { 
+      {
         url: action_url + '?create'
 //      url: chrome.runtime.getURL('https://www.amazon.es/gp/registry/wishlist'),
       },
@@ -30,7 +29,7 @@ console.log('background.ts')
 // 3  url: chrome.runtime.getURL('https://www.amazon.es/gp/registry/wishlist'),
 // 2  url: 'https://www.amazon.es/gp/registry/wishlist',
 // 4  chrome.tabs.create({url: "https://www.youtube.com"});
- 
+
 declare module '@quasar/app-vite' {
   interface BexEventMap {
     /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -44,10 +43,8 @@ declare module '@quasar/app-vite' {
   }
 }
 
-export default bexBackground((bridge , allActiveConnections) => {
-
-
-  console.log (allActiveConnections);
+export default bexBackground((bridge, allActiveConnections) => {
+  console.log(allActiveConnections);
 
   /*
 
@@ -61,7 +58,7 @@ export default bexBackground((bridge , allActiveConnections) => {
 
   bridge.on('log', ({ data, respond }) => {
     console.log(`[BEX] ${data.message}`, ...(data.data || []));
-//    respond();
+    //    respond();
   });
 
   bridge.on('getTime', ({ respond }) => {
@@ -83,16 +80,23 @@ export default bexBackground((bridge , allActiveConnections) => {
   });
   // Usage:
   // const { data } = await bridge.send('storage.get', { key: 'someKey' })
-
+  /*
   bridge.on('storage.set', ({ data, respond }) => {
     chrome.storage.local.set({ [data.key]: data.value }, () => {
       respond();
     });
   });
+*/
+  bridge.on('storage.set', async ({ data }) => {
+    chrome.storage.local.set({ [data.key]: data.value });
+    return true;
+  });
+
   // Usage:
   // await bridge.send('storage.set', { key: 'someKey', value: 'someValue' })
 
   bridge.on('storage.remove', ({ data, respond }) => {
+    console.log('!!! Stoarge removed');
     chrome.storage.local.remove(data.key, () => {
       respond();
     });
@@ -100,17 +104,13 @@ export default bexBackground((bridge , allActiveConnections) => {
   // Usage:
   // await bridge.send('storage.remove', { key: 'someKey' })
 
-
-
-chrome.runtime.onMessage.addListener(({ action, value }) => {
-  if (action === 'updateIcon') {
-    chrome.browserAction.setIcon({
-      path: `/icons/icon-128x128_${value}.png`,
-    });
-  }
-});
-
-
+  chrome.runtime.onMessage.addListener(({ action, value }) => {
+    if (action === 'updateIcon') {
+      chrome.browserAction.setIcon({
+        path: `/icons/icon-128x128_${value}.png`,
+      });
+    }
+  });
 
   /*
   // EXAMPLES

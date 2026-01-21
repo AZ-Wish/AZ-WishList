@@ -1,5 +1,5 @@
 <template>
-  <div 
+  <div
     class="product-item row no-wrap items-center"
     :class="{ outOfStock: product.agotado }"
   >
@@ -16,17 +16,14 @@
     </div>
     <div class="product-item-box-separator"></div>
     <div
-      class="
-        col
-        product-item-box-description-wrapper
-        vertical-middle
-        product-item-box-text
-      "
+      class="col product-item-box-description-wrapper vertical-middle product-item-box-text"
       :class="{ disabled: product.agotado }"
     >
-    <div class='product-item-box-title'>{{ product.title }}</div>
-      <div class='product-item-box-description'>{{ product.description }}</div>
-
+      <div class="product-item-box-title">{{ product.title }}</div>
+      <div class="product-item-box-description">{{ product.description }}</div>
+      <div class="product-item-box-description">
+        {{ product.itemAddedDateStr }}
+      </div>
     </div>
     <div v-if="product.price" class="product-item-box-price text-right">
       <div
@@ -42,15 +39,34 @@
           "
         >
           {{ product.price }}
-          <span style="font-size: 20px; font-weight: normal">{{product.moneda}}</span>
-          <div style="font-size: 12px; margin-right:14px"> {{ product.reviewStarsAZ.toFixed(1) }} 
-            <IMG src="icons/icon-16x16_on.png" width="16" height="16" :title="'AZwish normalized score based on ' + product.reviewCount + ' reviews'" />
-             | {{product.reviewStars}} ⭐
+          <span style="font-size: 20px; font-weight: normal"
+            >{{ product.moneda }}
+            <IMG
+              src="icons/icon-prime.png"
+              :style="product.prime ? '' : 'display: none'"
+              width="40"
+            />
+          </span>
+          <div style="font-size: 12px; margin-right: 14px">
+            {{ product.reviewStarsAZ.toFixed(1) }}
+            <IMG
+              src="icons/icon-16x16_on.png"
+              width="16"
+              height="16"
+              :title="
+                'AZwish normalized score based on ' +
+                product.reviewCount +
+                ' reviews'
+              "
+            />
+            | {{ product.reviewStars }} ⭐
           </div>
         </div>
-        <div class = "product-item-box-separator" />
-        <div class = "product-item-box-price-discount__discount">
-          <span style="color: #aaaaaa; font-size: 12px; line-height: 13px">Discount {{product.moneda}}</span>
+        <div class="product-item-box-separator" />
+        <div class="product-item-box-price-discount__discount">
+          <span style="color: #aaaaaa; font-size: 12px; line-height: 13px"
+            >Discount {{ product.moneda }}</span
+          >
           <span
             style="
               color: #aaaaaa;
@@ -62,10 +78,10 @@
             {{ product.discount }}
           </span>
           <span
-            class = "text-primary"
-            :class = "product.discount!='0' ? 'text-primary' : 'noDeal'"
+            class="text-primary"
+            :class="product.discount != '0' ? 'text-primary' : 'noDeal'"
             style="font-weight: bold; font-size: 18px"
-          > 
+          >
             ({{ product.discount_pc }}%)
           </span>
         </div>
@@ -105,9 +121,9 @@ export default defineComponent({
   setup() {
     const $q = useQuasar();
     const openDetail = (link: string) => {
-      console.log ('openDetail');
+      console.log('openDetail');
       window.open(link, '_blank');
-//      void $q.bex.send('openDetail', { link }); #1 why use Quasar port to open a tab? (that disconnect sometimes)
+      //      void $q.bex.send('openDetail', { link }); #1 why use Quasar port to open a tab? (that disconnect sometimes)
     };
     return { openDetail };
   },
@@ -123,14 +139,18 @@ export default defineComponent({
   padding-left: 0;
 
   background: #f0f0f3;
-  box-shadow: -5px -5px 20px #ffffff, 5px 5px 20px rgba(174, 174, 192, 0.5);
+  box-shadow:
+    -5px -5px 20px #ffffff,
+    5px 5px 20px rgba(174, 174, 192, 0.5);
   border-radius: 10px;
 }
 .product-item-action {
   width: 160px;
   height: 52px;
   background: #f0f0f3;
-  box-shadow: -5px -5px 20px #ffffff, 5px 5px 20px rgba(174, 174, 192, 0.5);
+  box-shadow:
+    -5px -5px 20px #ffffff,
+    5px 5px 20px rgba(174, 174, 192, 0.5);
   border-radius: 30px;
   position: absolute;
   top: 69px;
@@ -183,7 +203,6 @@ export default defineComponent({
   -webkit-line-clamp: 3;
 }
 
-
 .product-item-box-description {
   font-size: 12px;
   color: #808080;
@@ -206,11 +225,10 @@ export default defineComponent({
 }
 
 .outOfStock {
-  opacity: 0.70;
+  opacity: 0.7;
 }
 
 .noDeal {
   visibility: hidden;
 }
-
 </style>

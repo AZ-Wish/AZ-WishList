@@ -56,7 +56,7 @@ And are automatically copied to ZIP:/www/..
 ### Build the extension in development mode (hot-code reloading, error reporting, etc.)
 
 ```bash
-yarn dev -m bex
+quasar dev -m bex
 ```
 
 Will create all the required files and the \www folder inside \dist\bex

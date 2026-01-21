@@ -5,7 +5,8 @@ export interface Product {
   discount: string;
   discount_pc: string;
   image: string;
-  itemAddedDate: string;
+  itemAddedDateStr: string;
+  itemAddedDate: Date;
   link: string;
   price: string;
   title: string;
@@ -14,6 +15,7 @@ export interface Product {
   reviewStars: string;
   reviewCount: string;
   reviewStarsAZ: number;
+  prime?: boolean;
 }
 
 export enum Filter {

@@ -1,7 +1,7 @@
 {
   "name": "PWA-azwish-list",
   "description": "PWA - AZwish List",
-  "version": "1.2",
+  "version": "2.2",
   "manifest_version": 3,
   "browser_action": {
     "default_title": "AZwish List"
@@ -129,6 +129,7 @@
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
-    }
+    },
+    { "src": "icons/icon-prime.png", "sizes": "79x22", "type": "image/png" }
   ]
 }

@@ -152,7 +152,7 @@
                 v-close-popup
                 @click="setFilter(Filter.Availability)"
               >
-                <q-item-section>Availability</q-item-section>
+                <q-item-section>Added time</q-item-section>
               </q-item>
             </q-list>
           </q-menu>
@@ -189,10 +189,23 @@ export default defineComponent({
     const showingFilterMenu = ref(false);
 
     const showAmazon = async () => {
-      console.log('Return to Amazon 1');
-      const data = { key: 'az-wish-disabled', value: true };
-      await $q.bex.send('storage.set', data);
-      void $q.bex.send('showAmazon');
+      console.log('Return to Amazon launched');
+
+      //    await $q.bex.send('storage.set', data);
+      try {
+        const data = { key: 'az-wish-disabled', value: true };
+        await Promise.race([
+          $q.bex.send('storage.set', data),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error('BEX timeout')), 2000),
+          ),
+        ]);
+        //$q.bex.send('showAmazon').catch(() => {})
+        void $q.bex.send('showAmazon');
+        console.log('Return to Amazon sent');
+      } catch (err) {
+        console.log('Return to Amazon BEX failed:', err);
+      }
     };
 
     const reloadWL = async () => {
