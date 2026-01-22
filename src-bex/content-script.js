@@ -358,6 +358,29 @@ const getProducts = () => {
       product['itemAddedDateStr'] = '';
       product['itemAddedDate'] = null;
     }
+    /*
+    try {
+      product['priceDrop'] = c[i].querySelector(
+        '#itemPriceDrop_' + String(id),
+      ).textContent;
+      console.log('priceDrop:', product['priceDrop']);
+    } catch (err) {
+      console.log('priceDrop error:', err);
+    }
+*/
+    try {
+      product['deliveryBadge'] = c[i].querySelectorAll(
+        '[data-csa-c-element-id="list-desktop-wishlist-item-info-delivery-badge"]',
+      )[0];
+      if (product['deliveryBadge'])
+        product['deliveryBadge'] = product['deliveryBadge'].textContent.replace(
+          /\s*\n\s*/g,
+          ' ',
+        );
+      //      console.log('deliveryBadge:', product['priceDrodeliveryBadgep']);
+    } catch (err) {
+      console.log('deliveryBadge error:', product['deliveryBadge']);
+    }
 
     /*
   try {

@@ -46,6 +46,12 @@
               :style="product.prime ? '' : 'display: none'"
               width="40"
             />
+            <div
+              class="product-item-box-price-delivery"
+              :style="product.prime ? 'color: #000000' : ''"
+            >
+              {{ product.deliveryBadge }}
+            </div>
           </span>
           <div style="font-size: 12px; margin-right: 14px">
             {{ product.reviewStarsAZ.toFixed(1) }}
@@ -206,6 +212,13 @@ export default defineComponent({
 .product-item-box-description {
   font-size: 12px;
   color: #808080;
+  -webkit-line-clamp: 1;
+}
+
+.product-item-box-price-delivery {
+  font-size: 12px;
+  color: #ff6060;
+  transform: translateY(-8px);
   -webkit-line-clamp: 1;
 }
 
