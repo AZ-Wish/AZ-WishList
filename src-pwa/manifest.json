@@ -1,7 +1,7 @@
 {
   "name": "PWA-azwish-list",
   "description": "PWA - AZwish List",
-  "version": "2.2",
+  "version": "1.0",
   "manifest_version": 3,
   "browser_action": {
     "default_title": "AZwish List"
