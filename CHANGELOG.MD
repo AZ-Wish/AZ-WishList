@@ -1,15 +1,16 @@
 # Change log
 
-## v2.2.0 — ../../2026
+## v2.2.0 — 23/1/2026
 
 More info at: [Milestone v2.2](https://github.com/AZ-Wish/AZ-WishList/milestone/3)
 
 **Added:**
 
+- fest: add PRIME badge and delivery cost and options to products #16
 - feat: Chrome web store published #17
+- feat: sort products by added date #15
 - feat: link to Extension in logo #14
 
-**Fixed:**
 **Changed:**
 
 - build: upgrade to quasar v2.18.6
