@@ -10,6 +10,7 @@ import { bexContent } from 'quasar/wrappers';
 //export default function attachContentHooks(bridge) {
 export default bexContent((bridge) => {
   /* #3 why use Quasar port to open a tab? (that disconnect sometimes) */
+
   bridge.on('showAmazon', (event) => {
     console.log('[bexContent] showAmazon');
     iFrame.hidden = true;

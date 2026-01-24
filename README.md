@@ -1,6 +1,6 @@
 # AZwish List
 
-AZwish List Version 2.2 — [Change log](CHANGELOG.md)
+AZwish List Version 2.2.2 — [Change log](CHANGELOG.md)
 
 Extension: [Chrome web store](https://chromewebstore.google.com/detail/azwish-list/gdjlahpieanojklejhdjedcopmhjmhgp)
 
@@ -103,7 +103,7 @@ At first you´ll see an empty list, wait while your Wish List is loaded.
 
 ### Publish Chrome extension in Production:
 
-[AZwish List - Chrome Web Store page](https://chrome.google.com/webstore/devconsole/42db463a-bca9-4d00-93dc-d9d100c27e5a/abphgoldafiaioaljbhgdhjhailijkkn/edit/package?hl=en-GB)
+[AZwish List - Chrome Web Store page](https://chrome.google.com/webstore/devconsole/707a431c-3aea-4396-a458-f3c9b0482dbc/gdjlahpieanojklejhdjedcopmhjmhgp/edit?hl=es)
 
 In the Build/Package section press 'Upload new package' and select the same ZIP file from previous step.
 
@@ -114,7 +114,7 @@ Update the 'Store listing' and 'Privacy' fields and "Publish changes"
 Texts at: https://docs.google.com/document/d/1VAcRGzkZPiwegI5XUH1m52AH3jakZx322SB-WSH3awI/edit?tab=t.0
 Images at: https://drive.google.com/drive/folders/1LeZbtFgztL-kwhxiNJZ48ihycL0mN-qu?usp=drive_link
 
-Check status at [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/42db463a-bca9-4d00-93dc-d9d100c27e5a?hl=en-GB)
+Check status at [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/707a431c-3aea-4396-a458-f3c9b0482dbc?hl=es)
 
 ~~DEPRECATED: Keep your key file in a safe place. You will need it to create new versions of your extension.~~
 

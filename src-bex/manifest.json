@@ -1,7 +1,7 @@
 {
   "name": "AZwish List",
   "description": "View all deals in your personal Amazon Wish List.",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "manifest_version": 3,
 
   "permissions": ["storage"],

@@ -1,12 +1,12 @@
 # Change log
 
-## v2.2.0 — 23/1/2026
+## v2.2.2 — 24/1/2026
 
 More info at: [Milestone v2.2](https://github.com/AZ-Wish/AZ-WishList/milestone/3)
 
 **Added:**
 
-- fest: add PRIME badge and delivery cost and options to products #16
+- feat: add PRIME badge and delivery cost and options to products #16
 - feat: Chrome web store published #17
 - feat: sort products by added date #15
 - feat: link to Extension in logo #14
@@ -88,8 +88,6 @@ More info at: [Milestone v1.1.0](https://github.com/AZ-Wish/bew/issues?q=is%3Ais
 - Fixed blank page when returning to Amazon
 - Fixed some NaN and empty prices
 - Fixed reusing last product price
-
----
 
 ## v1.0.0 — 16/6/2021
 

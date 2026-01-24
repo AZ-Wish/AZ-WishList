@@ -14,7 +14,7 @@
             target="az"
             class="version"
           >
-            v2.2
+            v2.2.2
           </a>
           <q-tooltip
             transition-show="scale"
@@ -23,7 +23,7 @@
             self="top left"
             :offset="[-15, 10]"
           >
-            <B>AZwish List</B> v2.2<br />
+            <B>AZwish List</B> v2.2.2<br />
             Code by Oskar & Troglo<br />
             Design by Humphrey<br /><br />
             <i>Made with Intelygenz</i>
@@ -190,19 +190,19 @@ export default defineComponent({
 
     const showAmazon = async () => {
       console.log('Return to Amazon launched');
-
-      //    await $q.bex.send('storage.set', data);
       try {
+        /* Unused var? az-wish-disabled
         const data = { key: 'az-wish-disabled', value: true };
+        await $q.bex.send('storage.set', data);
+*/
+        //       void $q.bex.send('showAmazon');
         await Promise.race([
-          $q.bex.send('storage.set', data),
+          $q.bex.send('showAmazon'),
           new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('BEX timeout')), 2000),
+            setTimeout(() => reject(new Error('showAmazon timeout')), 2000),
           ),
         ]);
-        //$q.bex.send('showAmazon').catch(() => {})
-        void $q.bex.send('showAmazon');
-        console.log('Return to Amazon sent');
+        console.log('Return to Amazon sent to BEX');
       } catch (err) {
         console.log('Return to Amazon BEX failed:', err);
       }
